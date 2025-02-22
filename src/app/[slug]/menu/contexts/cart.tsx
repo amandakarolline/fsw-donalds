@@ -26,9 +26,30 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const toggleCart = () => setIsOpen((prev) => !prev);
+  const toggleCart = () => {
+    setIsOpen((prev) => !prev);
+  };
   const addProduct = (product: CartProduct) => {
-    setProducts((prev) => [...prev, product]);
+    // verificar se o produto já está no carrinho
+    // se estiver, aumente a sua quantidade
+    // se não estiver, adicione o produto ao carrinho
+    const productIsAlreadyOnTheCart = products.some(
+      (prevProducts) => prevProducts.id === product.id,
+    );
+    if (!productIsAlreadyOnTheCart) {
+      return setProducts((prevProducts) => [...prevProducts, product]);
+    }
+    setProducts((prevProducts) => {
+      return prevProducts.map((prevProduct) => {
+        if (prevProduct.id === product.id) {
+          return {
+            ...prevProduct,
+            quantity: prevProduct.quantity + product.quantity,
+          };
+        }
+        return prevProduct;
+      });
+    });
   };
   return (
     <CartContext.Provider value={{ isOpen, products, toggleCart, addProduct }}>
