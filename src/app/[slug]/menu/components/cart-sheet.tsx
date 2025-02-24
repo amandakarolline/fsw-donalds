@@ -45,7 +45,7 @@ const CartSheet = () => {
           </Button>
           <FinishOrderDialog
             open={finishOrderDialogIsOpen}
-            onOpenChage={setFinishOrderDialogIsOpen}
+            onOpenChange={setFinishOrderDialogIsOpen}
           />
         </div>
       </SheetContent>

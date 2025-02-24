@@ -35,7 +35,7 @@ const CartProductItem = ({ product }: CartItemProps) => {
               variant="outline"
               onClick={() => decreaseProductQuantity(product.id)}
             >
-              <ChevronLeftIcon size={16} />
+              <ChevronLeftIcon />
             </Button>
             <p className="w-7 text-xs">{product.quantity}</p>
             <Button
@@ -43,7 +43,7 @@ const CartProductItem = ({ product }: CartItemProps) => {
               variant="destructive"
               onClick={() => increaseProductQuantity(product.id)}
             >
-              <ChevronRightIcon size={11} />
+              <ChevronRightIcon />
             </Button>
           </div>
         </div>
