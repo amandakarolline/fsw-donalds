@@ -43,8 +43,8 @@ export const createOrder = async (input: CreateOrderInput) => {
   await db.order.create({
     data: {
       status: "PENDING",
-      costumerName: input.customerName,
-      costumerCpf: removeCpfPunctuation(input.customerCpf),
+      customerName: input.customerName,
+      customerCpf: removeCpfPunctuation(input.customerCpf),
       orderProducts: {
         createMany: {
           data: productsWithPricesAndQuantities,
@@ -58,5 +58,7 @@ export const createOrder = async (input: CreateOrderInput) => {
       restaurantId: restaurant.id,
     },
   });
-  redirect(`/${input.slug}/orders`);
+  redirect(
+    `/${input.slug}/orders?cpf=${removeCpfPunctuation(input.customerCpf)}`,
+  );
 };
