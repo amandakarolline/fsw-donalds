@@ -1,7 +1,7 @@
 "use client";
 
 import { OrderStatus, Prisma } from "@prisma/client";
-import { ChevronLastIcon, ScrollTextIcon } from "lucide-react";
+import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -48,7 +48,7 @@ const OrderList = ({ orders }: OrderListProps) => {
         className="rounded-full"
         onClick={handleBackClick}
       >
-        <ChevronLastIcon />
+        <ChevronLeftIcon />
       </Button>
       <div className="flex items-center gap-3">
         <ScrollTextIcon />
